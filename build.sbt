@@ -1,30 +1,10 @@
-val scalaV = "2.12.6"
-val specs2V = "4.3.2"
+val scalaV = "2.12.7"
+val specs2V = "4.3.5"
 
 libraryDependencies ++= Seq(
+  "com.typesafe.akka" %% "akka-http" % "10.1.5",
+  "com.typesafe.akka" %% "akka-stream" % "2.5.18",
   "org.specs2" %% "specs2-core" % specs2V % "test"
 )
 
 scalaVersion := scalaV
-
-// docs
-
-enablePlugins(ParadoxMaterialThemePlugin)
-
-paradoxMaterialTheme in Compile := {
-  ParadoxMaterialTheme()
-    // choose from https://jonas.github.io/paradox-material-theme/getting-started.html#changing-the-color-palette
-    .withColor("light-green", "amber")
-    // choose from https://jonas.github.io/paradox-material-theme/getting-started.html#adding-a-logo
-    .withLogoIcon("cloud")
-    .withCopyright("Copyleft © Johannes Rudolph")
-    .withRepository(uri("https://github.com/jrudolph/xyz"))
-    .withSocial(
-      uri("https://github.com/jrudolph"),
-      uri("https://twitter.com/virtualvoid")
-    )
-}
-
-paradoxProperties ++= Map(
-  "github.base_url" -> (paradoxMaterialTheme in Compile).value.properties.getOrElse("repo", "")
-)
