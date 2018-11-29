@@ -42,6 +42,7 @@ object Routes extends Directives {
   lazy val commandInjectionSimple =
     parameter('cmd) { cmd =>
       import sys.process._
+      // [RuleTest] Command Injection
       val result = s"/bin/bash $cmd".!!
       complete(result)
     }
@@ -54,6 +55,7 @@ object Routes extends Directives {
   // process call behind method call
   lazy val commandInjectionCallMethod =
     parameter('cmd) { cmd =>
+      // [RuleTest] Command Injection
       complete(execute(cmd))
     }
 
@@ -61,6 +63,7 @@ object Routes extends Directives {
   lazy val commandInjectionNestedParameterDirectives =
     parameter('cmd) { cmd =>
       parameter("other") { _ =>
+        // [RuleTest] Command Injection
         complete(execute(cmd))
       }
     }
@@ -68,27 +71,29 @@ object Routes extends Directives {
   // command injection when vulnerable parameter is not the first one
   lazy val commandInjectionMoreParameters =
     parameter('firstParam.as[Int], "cmd") { (i, cmd) =>
+      // [RuleTest] Command Injection
       complete(execute(cmd))
     }
 
   // command injection when vulnerable parameter is extracted via directive conjunction
   lazy val commandInjectionMultipleParametersByConjunction =
     (get & parameter('firstParam.as[Int]) & parameter("cmd")) { (i, cmd) =>
+      // [RuleTest] Command Injection
       complete(execute(cmd))
     }
 
   // command injection when vulnerable parameter is extracted via directive alternative
   lazy val commandInjectionMultipleParametersByAlternative =
     (parameter("command") | parameter("cmd")) { cmd =>
+      // [RuleTest] Command Injection
       complete(execute(cmd))
     }
 
   // process call when parameter is only used in an alternative route
   lazy val commandInjectionParameterInRouteAlternative =
     parameter('cmd) { cmd =>
-      concat(
-        path("xyz")(reject),
-        complete(execute(cmd))
+      // [RuleTest] Command Injection
+      concat(path("xyz")(reject), complete(execute(cmd))
       )
     }
 
@@ -98,9 +103,11 @@ object Routes extends Directives {
   // command injection when directive is abstracted
   lazy val commandInjectionDirectiveValue =
     getCommandParameter { cmd =>
+      // [RuleTest] Command Injection
       complete(execute(cmd))
     }
 
+  // [RuleTest] Command Injection
   def executeAndComplete(cmd: String): Route = complete(execute(cmd))
   // command injection when directive, call, and completion is abstract
   // (not common in this form but not impossible in more contrived ones)
@@ -114,6 +121,7 @@ object Routes extends Directives {
       // to break the linear call stack
       provideFutureCompletedInAWhile { fut =>
         onComplete(fut) { v =>
+          // [RuleTest] Command Injection
           complete(execute(cmd))
         }
       }
@@ -124,6 +132,7 @@ object Routes extends Directives {
   // process call from path segment
   lazy val commandInjectionFromPathSegment =
     path("execute" / Segment) { cmd =>
+      // [RuleTest] Command Injection
       complete(execute(cmd))
     }
 
@@ -136,6 +145,7 @@ object Routes extends Directives {
   // process call from cookie
   lazy val commandInjectionFromCookie =
     cookie("command") { cookiePair =>
+      // [RuleTest] Command Injection
       complete(execute(cookiePair.value))
     }
 
@@ -143,14 +153,17 @@ object Routes extends Directives {
 
   lazy val getFileFromParameter =
     parameter("fileName") { fileName =>
+      // [RuleTest] Path Manipulation
       getFromFile(fileName)
     }
   lazy val getFileFromFormField =
     formField("fileName") { fileName =>
+      // [RuleTest] Path Manipulation
       getFromFile(fileName)
     }
   lazy val getFileFromPathSegment =
     path("get" / Segment) { fileName =>
+      // [RuleTest] Path Manipulation
       getFromFile(fileName)
     }
 
@@ -158,11 +171,13 @@ object Routes extends Directives {
 
   lazy val getFromDirectoryFromParameter =
     parameter("dirName") { fileName =>
+      // [RuleTest] Path Manipulation
       getFromDirectory(fileName)
     }
 
   lazy val getFromBrowseableDirectoryFromParameter =
     parameter("dirName") { fileName =>
+      // [RuleTest] Path Manipulation
       getFromBrowseableDirectory(fileName)
     }
 
@@ -170,6 +185,7 @@ object Routes extends Directives {
   lazy val runClientRequestFromParameter =
     extractActorSystem { implicit system =>
       parameter("uri") { uri =>
+        // [RuleTest] Server-Side Request Forgery
         val request = HttpRequest(uri = uri)
         val responseF = Http().singleRequest(request)
         complete(responseF)
@@ -180,6 +196,7 @@ object Routes extends Directives {
   lazy val runClientRequestWithUriPartFromParameter =
     extractActorSystem { implicit system =>
       parameter("uri") { uri =>
+        // [RuleTest] Server-Side Request Forgery
         val request = HttpRequest(uri = s"https://localhost:12345/$uri")
         val responseF = Http().singleRequest(request)
         complete(responseF)
@@ -188,6 +205,7 @@ object Routes extends Directives {
 
   // XSS: disabling CORS is a security risk
   lazy val unrestrictedAccessControlAllowOrigin =
+    // [RuleTest] Overly Permissive CORS Policy
     respondWithHeader(headers.`Access-Control-Allow-Origin`.*) {
       complete("Hello, I'm unsafe")
     }

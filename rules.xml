@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RulePack xmlns="xmlns://www.fortifysoftware.com/schema/rules" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="RulePack">
+    <RulePackID>DEA3E198-636E-423B-B261-A9738C28C6DD</RulePackID>
+    <SKU>SKU-6088D324-2E59-48C7-864E-D38E6BA5FF96</SKU>
+    <Name><![CDATA[]]></Name>
+    <Version>1.0</Version>
+    <Description><![CDATA[]]></Description>
+    <Rules version="3.2">
+        <RuleDefinitions>
+        <DataflowSinkRule formatVersion="17.20" language="scala">
+            <MetaInfo>
+                <Group name="package">Scala Akka HTTP</Group>
+            </MetaInfo>
+            <RuleID>D236F20C-286A-479A-B39C-61A50CF80FB2</RuleID>
+            <VulnKingdom>Input Validation and Representation</VulnKingdom>
+            <VulnCategory>Command Injection</VulnCategory>
+            <DefaultSeverity>4.0</DefaultSeverity>
+            <Description ref="desc.dataflow.scala.command_injection"/>
+            <Sink>
+                <InArguments>0</InArguments>
+                <Conditional>
+                    <And>
+                        <Not>
+                            <TaintFlagSet taintFlag="NUMBER"/>
+                        </Not>
+                        <Not>
+                            <TaintFlagSet taintFlag="VALIDATED_COMMAND_INJECTION"/>
+                        </Not>
+                    </And>
+                </Conditional>
+            </Sink>
+            <FunctionIdentifier>
+                <NamespaceName>
+                    <Pattern>.*</Pattern>
+                </NamespaceName>
+                <ClassName>
+                    <Pattern>.*</Pattern>
+                </ClassName>
+                <FunctionName>
+                    <Value>execute</Value>
+                </FunctionName>
+                <ApplyTo implements="true" overrides="true" extends="true"/>
+            </FunctionIdentifier>
+        </DataflowSinkRule>
+            
+        </RuleDefinitions>
+    </Rules>
+</RulePack>
+

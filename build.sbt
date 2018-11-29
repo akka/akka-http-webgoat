@@ -8,3 +8,19 @@ libraryDependencies ++= Seq(
 )
 
 scalaVersion := scalaV
+
+//Fortify plugin
+val buildid = "akkagoat"
+val sca_version= "19.1"
+val plugin_version = "1.0.12"
+
+credentials += Credentials(Path.userHome / ".lightbend" / "commercial.credentials")
+resolvers += "lightbend-commercial-releases" at "https://repo.lightbend.com/commercial-releases/"
+scalacOptions += s"-P:fortify:build=${buildid}"
+scalacOptions += s"-P:fortify:scaversion=${sca_version}"
+addCompilerPlugin("com.lightbend" %% "scala-fortify" % plugin_version classifier "assembly" cross CrossVersion.patch)
+val translate: TaskKey[Unit] = taskKey("Fortify Translation")
+translate := Def.sequential(
+  clean in Compile,
+  compile in Compile
+).value
