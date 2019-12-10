@@ -1,0 +1,194 @@
+[62DCA7F0D8B6E3A52CE84F47A77199ED : low : System Information Leak : semantic ]
+BootWebGoat.scala(27) : Throwable.printStackTrace()
+
+[2F6060B081A5F8CBEF49E68CEE163BEB : low : System Information Leak : semantic ]
+BootWebGoat.scala(32) : Throwable.printStackTrace()
+
+[4BC53406206E6A8ABB4B3D151916B1F6 : low : HTML5 : Overly Permissive CORS Policy : semantic ]
+Routes.scala(190) : Access-Control-Allow-Origin.*()
+
+[FF20E64AD229AEFC2EF0082D6F0379CF : critical : Path Manipulation : dataflow ]
+Routes.scala(13) :  ->FileAndResourceDirectives.getFromFile(0)
+    Routes.scala(146) :  ->Routes.getFromFile(0)
+    Routes.scala(145) :  ->akka.http.webgoat.Routes$$anonfun$getFileFromParameter$1.apply(0)
+
+[3F54F113B2CE7382E0904CC83635A4A2 : critical : Path Manipulation : dataflow ]
+Routes.scala(146) :  ->FileAndResourceDirectives.getFromFile(0)
+    Routes.scala(145) :  ->akka.http.webgoat.Routes$$anonfun$getFileFromParameter$1.apply(0)
+
+[FF20E64AD229AEFC2EF0082D6F0379D0 : critical : Path Manipulation : dataflow ]
+Routes.scala(13) :  ->FileAndResourceDirectives.getFromFile(0)
+    Routes.scala(150) :  ->Routes.getFromFile(0)
+    Routes.scala(149) :  ->akka.http.webgoat.Routes$$anonfun$getFileFromFormField$1.apply(0)
+
+[3F54F113B2CE7382E0904CC83635A4A3 : critical : Path Manipulation : dataflow ]
+Routes.scala(150) :  ->FileAndResourceDirectives.getFromFile(0)
+    Routes.scala(149) :  ->akka.http.webgoat.Routes$$anonfun$getFileFromFormField$1.apply(0)
+
+[FF20E64AD229AEFC2EF0082D6F0379D1 : critical : Path Manipulation : dataflow ]
+Routes.scala(13) :  ->FileAndResourceDirectives.getFromFile(0)
+    Routes.scala(154) :  ->Routes.getFromFile(0)
+    Routes.scala(153) :  ->akka.http.webgoat.Routes$$anonfun$getFileFromPathSegment$1.apply(0)
+
+[3F54F113B2CE7382E0904CC83635A4A4 : critical : Path Manipulation : dataflow ]
+Routes.scala(154) :  ->FileAndResourceDirectives.getFromFile(0)
+    Routes.scala(153) :  ->akka.http.webgoat.Routes$$anonfun$getFileFromPathSegment$1.apply(0)
+
+[0977183DE9CEB46C3EAD2B8EFED373DF : critical : Path Manipulation : dataflow ]
+Routes.scala(13) :  ->FileAndResourceDirectives.getFromDirectory(0)
+    Routes.scala(161) :  ->Routes.getFromDirectory(0)
+    Routes.scala(160) :  ->akka.http.webgoat.Routes$$anonfun$getFromDirectoryFromParameter$1.apply(0)
+
+[C4986A6ABB3B90CDCD7ADE8838EC18C8 : critical : Path Manipulation : dataflow ]
+Routes.scala(161) :  ->FileAndResourceDirectives.getFromDirectory(0)
+    Routes.scala(160) :  ->akka.http.webgoat.Routes$$anonfun$getFromDirectoryFromParameter$1.apply(0)
+
+[E189CED1A856488186D4ECB87626F490 : critical : Path Manipulation : dataflow ]
+Routes.scala(13) :  ->FileAndResourceDirectives.getFromBrowseableDirectory(0)
+    Routes.scala(166) :  ->Routes.getFromBrowseableDirectory(0)
+    Routes.scala(165) :  ->akka.http.webgoat.Routes$$anonfun$getFromBrowseableDirectoryFromParameter$1.apply(0)
+
+[35E0F0B6D1BA2CDCDB87FC5A57BD021E : critical : Path Manipulation : dataflow ]
+Routes.scala(166) :  ->FileAndResourceDirectives.getFromBrowseableDirectory(0)
+    Routes.scala(165) :  ->akka.http.webgoat.Routes$$anonfun$getFromBrowseableDirectoryFromParameter$1.apply(0)
+
+[AECF567DEF24AA17E38A085A85CC4295 : low : System Information Leak : Internal : dataflow ]
+BootWebGoat.scala(26) :  ->Predef.println(0)
+    BootWebGoat.scala(26) : <- Throwable.getMessage(return)
+
+[51229F4A98FE8A64F8183408821903F4 : high : Server-Side Request Forgery : dataflow ]
+Routes.scala(173) :  ->HttpRequest.apply(1)
+    Routes.scala(173) : <->Uri.apply(0->return)
+    Routes.scala(172) :  ->akka.http.webgoat.Routes$$anonfun$runClientRequestFromParameter$2.apply(0)
+
+[8FE2290FDF1FE85FD8A8B14C571849EA : high : Server-Side Request Forgery : dataflow ]
+Routes.scala(183) :  ->HttpRequest.apply(1)
+    Routes.scala(183) : <->Uri.apply(0->return)
+    Routes.scala(182) :  ->akka.http.webgoat.Routes$$anonfun$runClientRequestWithUriPartFromParameter$2.apply(0)
+
+[4267C682996990370405F727B1ECAEB7 : critical : Command Injection : dataflow ]
+Routes.scala(45) :  ->ProcessBuilder.!!(this)
+    Routes.scala(45) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(43) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionSimple$1.apply(0)
+
+[D6158091C90F2F3099025C65FA9E7AF6 : critical : Command Injection : dataflow ]
+Routes.scala(51) :  ->ProcessBuilder.!!(this)
+    Routes.scala(51) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(57) :  ->Routes.execute(0)
+    Routes.scala(57) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionCallMethod$2.apply(this)
+        Routes.scala(57) : <=> (this)
+    Routes.scala(57) : <->akka.http.webgoat.Routes$$anonfun$commandInjectionCallMethod$2.innerinit^(0->this)
+    Routes.scala(56) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionCallMethod$1.apply(0)
+
+[BC4F6F8140D8E9AF3B7F4CCC61AA16A6 : critical : Command Injection : dataflow ]
+Routes.scala(51) :  ->ProcessBuilder.!!(this)
+    Routes.scala(51) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(64) :  ->Routes.execute(0)
+    Routes.scala(64) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionNestedParameterDirectives$3.apply(this)
+        Routes.scala(64) : <=> (this)
+    Routes.scala(64) : <->akka.http.webgoat.Routes$$anonfun$commandInjectionNestedParameterDirectives$3.innerinit^(0->this)
+    Routes.scala(63) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionNestedParameterDirectives$2.apply(this)
+        Routes.scala(63) : <=> (this)
+    Routes.scala(63) : <->akka.http.webgoat.Routes$$anonfun$commandInjectionNestedParameterDirectives$2.innerinit^(0->this)
+    Routes.scala(62) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionNestedParameterDirectives$1.apply(0)
+
+[E95F8746B90792725016D115ECF33CEC : critical : Command Injection : dataflow ]
+Routes.scala(51) :  ->ProcessBuilder.!!(this)
+    Routes.scala(51) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(71) :  ->Routes.execute(0)
+    Routes.scala(71) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionMoreParameters$2.apply(this)
+        Routes.scala(71) : <=> (this)
+    Routes.scala(71) : <->akka.http.webgoat.Routes$$anonfun$commandInjectionMoreParameters$2.innerinit^(0->this)
+    Routes.scala(70) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionMoreParameters$1.apply(1)
+
+[E95F8746B90792725016D115ECF33CED : critical : Command Injection : dataflow ]
+Routes.scala(51) :  ->ProcessBuilder.!!(this)
+    Routes.scala(51) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(77) :  ->Routes.execute(0)
+    Routes.scala(77) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionMultipleParametersByConjunction$2.apply(this)
+        Routes.scala(77) : <=> (this)
+    Routes.scala(77) : <->akka.http.webgoat.Routes$$anonfun$commandInjectionMultipleParametersByConjunction$2.innerinit^(0->this)
+    Routes.scala(76) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionMultipleParametersByConjunction$1.apply(1)
+
+[D6158091C90F2F3099025C65FA9E7AF7 : critical : Command Injection : dataflow ]
+Routes.scala(51) :  ->ProcessBuilder.!!(this)
+    Routes.scala(51) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(83) :  ->Routes.execute(0)
+    Routes.scala(83) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionMultipleParametersByAlternative$2.apply(this)
+        Routes.scala(83) : <=> (this)
+    Routes.scala(83) : <->akka.http.webgoat.Routes$$anonfun$commandInjectionMultipleParametersByAlternative$2.innerinit^(0->this)
+    Routes.scala(82) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionMultipleParametersByAlternative$1.apply(0)
+
+[BC4F6F8140D8E9AF3B7F4CCC61AA16A7 : critical : Command Injection : dataflow ]
+Routes.scala(51) :  ->ProcessBuilder.!!(this)
+    Routes.scala(51) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(91) :  ->Routes.execute(0)
+    Routes.scala(89) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionParameterInRouteAlternative$3.apply(this)
+        Routes.scala(91) : <=> (this)
+    Routes.scala(91) : <->akka.http.webgoat.Routes$$anonfun$commandInjectionParameterInRouteAlternative$3.innerinit^(0->this)
+    Routes.scala(88) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionParameterInRouteAlternative$1.apply(0)
+
+[D6158091C90F2F3099025C65FA9E7AF8 : critical : Command Injection : dataflow ]
+Routes.scala(51) :  ->ProcessBuilder.!!(this)
+    Routes.scala(51) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(101) :  ->Routes.execute(0)
+    Routes.scala(101) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionDirectiveValue$2.apply(this)
+        Routes.scala(101) : <=> (this)
+    Routes.scala(101) : <->akka.http.webgoat.Routes$$anonfun$commandInjectionDirectiveValue$2.innerinit^(0->this)
+    Routes.scala(100) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionDirectiveValue$1.apply(0)
+
+[BC4F6F8140D8E9AF3B7F4CCC61AA16A8 : critical : Command Injection : dataflow ]
+Routes.scala(51) :  ->ProcessBuilder.!!(this)
+    Routes.scala(51) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(104) :  ->Routes.execute(0)
+    Routes.scala(104) :  ->akka.http.webgoat.Routes$$anonfun$executeAndComplete$1.apply(this)
+        Routes.scala(104) : <=> (this)
+    Routes.scala(104) : <->akka.http.webgoat.Routes$$anonfun$executeAndComplete$1.innerinit^(0->this)
+    Routes.scala(108) :  ->Routes.executeAndComplete(0)
+    Routes.scala(108) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionParameterAbstract$1.apply(0)
+
+[BC4F6F8140D8E9AF3B7F4CCC61AA16A9 : critical : Command Injection : dataflow ]
+Routes.scala(51) :  ->ProcessBuilder.!!(this)
+    Routes.scala(51) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(117) :  ->Routes.execute(0)
+    Routes.scala(117) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectiondAsync$5.apply(this)
+        Routes.scala(117) : <=> (this)
+    Routes.scala(117) : <->akka.http.webgoat.Routes$$anonfun$commandInjectiondAsync$5.innerinit^(0->this)
+    Routes.scala(116) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectiondAsync$4.apply(this)
+        Routes.scala(116) : <=> (this)
+    Routes.scala(116) : <->akka.http.webgoat.Routes$$anonfun$commandInjectiondAsync$4.innerinit^(0->this)
+    Routes.scala(115) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectiondAsync$2.apply(this)
+        Routes.scala(115) : <=> (this)
+    Routes.scala(115) : <->akka.http.webgoat.Routes$$anonfun$commandInjectiondAsync$2.innerinit^(0->this)
+    Routes.scala(112) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectiondAsync$1.apply(0)
+
+[D6158091C90F2F3099025C65FA9E7AF9 : critical : Command Injection : dataflow ]
+Routes.scala(51) :  ->ProcessBuilder.!!(this)
+    Routes.scala(51) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(127) :  ->Routes.execute(0)
+    Routes.scala(127) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionFromPathSegment$2.apply(this)
+        Routes.scala(127) : <=> (this)
+    Routes.scala(127) : <->akka.http.webgoat.Routes$$anonfun$commandInjectionFromPathSegment$2.innerinit^(0->this)
+    Routes.scala(126) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionFromPathSegment$1.apply(0)
+
+[D6158091C90F2F3099025C65FA9E7AFA : critical : Command Injection : dataflow ]
+Routes.scala(51) :  ->ProcessBuilder.!!(this)
+    Routes.scala(51) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(133) :  ->Routes.execute(0)
+    Routes.scala(133) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionFromFormField$2.apply(this)
+        Routes.scala(133) : <=> (this)
+    Routes.scala(133) : <->akka.http.webgoat.Routes$$anonfun$commandInjectionFromFormField$2.innerinit^(0->this)
+    Routes.scala(132) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionFromFormField$1.apply(0)
+
+[7FDCDACE5CA5338A27ACC6F584609754 : critical : Command Injection : dataflow ]
+Routes.scala(51) :  ->ProcessBuilder.!!(this)
+    Routes.scala(51) : <->ProcessImplicits.stringToProcess(0->return)
+    Routes.scala(139) :  ->Routes.execute(0)
+    Routes.scala(139) : <->HttpCookiePair.value(this->return)
+    Routes.scala(139) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionFromCookie$2.apply(this)
+        Routes.scala(139) : <=> (this)
+    Routes.scala(139) : <->akka.http.webgoat.Routes$$anonfun$commandInjectionFromCookie$2.innerinit^(0->this)
+    Routes.scala(138) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionFromCookie$1.apply(0)
+
+[C28720E53777D9E9CB1598CACD02F9E7 : low : J2EE Bad Practices : Leftover Debug Code : structural ]
+    BootWebGoat.scala(11)
