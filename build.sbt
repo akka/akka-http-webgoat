@@ -8,3 +8,4 @@ libraryDependencies ++= Seq(
 )
 
 scalaVersion := scalaV
+scalacOptions ++= Seq("-deprecation", "-feature")
