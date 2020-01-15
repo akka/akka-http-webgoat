@@ -40,7 +40,7 @@ object Routes extends Directives {
   // A command injection example from a path parameter with different styles of routes
 
   lazy val commandInjectionSimple =
-    parameter('cmd) { cmd =>
+    parameter("cmd") { cmd =>
       import sys.process._
       val result = s"/bin/bash $cmd".!!
       complete(result)
@@ -53,13 +53,13 @@ object Routes extends Directives {
 
   // process call behind method call
   lazy val commandInjectionCallMethod =
-    parameter('cmd) { cmd =>
+    parameter("cmd") { cmd =>
       complete(execute(cmd))
     }
 
   // process call nested in directives
   lazy val commandInjectionNestedParameterDirectives =
-    parameter('cmd) { cmd =>
+    parameter("cmd") { cmd =>
       parameter("other") { _ =>
         complete(execute(cmd))
       }
@@ -67,13 +67,13 @@ object Routes extends Directives {
 
   // command injection when vulnerable parameter is not the first one
   lazy val commandInjectionMoreParameters =
-    parameter('firstParam.as[Int], "cmd") { (i, cmd) =>
+    parameter("firstParam".as[Int], "cmd") { (i, cmd) =>
       complete(execute(cmd))
     }
 
   // command injection when vulnerable parameter is extracted via directive conjunction
   lazy val commandInjectionMultipleParametersByConjunction =
-    (get & parameter('firstParam.as[Int]) & parameter("cmd")) { (i, cmd) =>
+    (get & parameter("firstParam".as[Int]) & parameter("cmd")) { (i, cmd) =>
       complete(execute(cmd))
     }
 
@@ -85,7 +85,7 @@ object Routes extends Directives {
 
   // process call when parameter is only used in an alternative route
   lazy val commandInjectionParameterInRouteAlternative =
-    parameter('cmd) { cmd =>
+    parameter("cmd") { cmd =>
       concat(
         path("xyz")(reject),
         complete(execute(cmd))
@@ -93,7 +93,7 @@ object Routes extends Directives {
     }
 
   private val getCommandParameter: Directive1[String] =
-    parameter('cmd)
+    parameter("cmd")
 
   // command injection when directive is abstracted
   lazy val commandInjectionDirectiveValue =
@@ -109,7 +109,7 @@ object Routes extends Directives {
 
   // process call nested in async processing
   lazy val commandInjectiondAsync =
-    parameter('cmd) { cmd =>
+    parameter("cmd") { cmd =>
       // future and value is ignored but the inner blocks will be executed asynchronously after a while
       // to break the linear call stack
       provideFutureCompletedInAWhile { fut =>
@@ -129,7 +129,7 @@ object Routes extends Directives {
 
   // process call from form field
   lazy val commandInjectionFromFormField =
-    formField('cmd) { cmd =>
+    formField("cmd") { cmd =>
       complete(execute(cmd))
     }
 
