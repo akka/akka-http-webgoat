@@ -6,7 +6,7 @@ on:
       - fortify
   pull_request:
     branches:
-      - main
+      - fortify
 
 jobs:
   test:
