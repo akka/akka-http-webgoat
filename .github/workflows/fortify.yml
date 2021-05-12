@@ -12,6 +12,8 @@ jobs:
   test:
     strategy:
       fail-fast: false
+      matrix:
+        java: [8, 11]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -19,7 +21,7 @@ jobs:
     - uses: actions/setup-java@v2
       with:
         distribution: adopt
-        java-version: 8
+        java-version: ${{matrix.java}}
 
     - uses: actions/cache@v2
       env:

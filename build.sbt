@@ -1,9 +1,9 @@
 val scalaV = "2.13.5"
-val specs2V = "4.6.0"
+val specs2V = "4.11.0"
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka" %% "akka-http" % "10.1.11",
-  "com.typesafe.akka" %% "akka-stream" % "2.5.27",
+  "com.typesafe.akka" %% "akka-http" % "10.1.14",
+  "com.typesafe.akka" %% "akka-stream" % "2.6.14",
   "org.specs2" %% "specs2-core" % specs2V % "test"
 )
 
