@@ -1,4 +1,4 @@
-scalaVersion := "2.13.10"
+scalaVersion := "2.13.11"
 scalacOptions ++= Seq("-deprecation", "-feature")
 
 resolvers += "Akka library repository".at("https://repo.akka.io/maven")
