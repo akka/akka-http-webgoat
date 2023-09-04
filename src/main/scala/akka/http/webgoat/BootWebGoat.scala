@@ -2,21 +2,21 @@ package akka.http.webgoat
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.stream.ActorMaterializer
+import akka.stream.Materializer
 
 import scala.util.Failure
 import scala.util.Success
 import scala.util.control.NonFatal
 
 object BootWebGoat extends App {
-  implicit val system = ActorSystem()
-  implicit val mat = ActorMaterializer()
+  implicit val system: ActorSystem = ActorSystem()
   import system.dispatcher
 
   try {
     val bindingF =
       Http()
-        .bindAndHandle(Routes.root, "localhost", 8080)
+        .newServerAt("localhost", 8080)
+        .bindFlow(Routes.root)
 
     bindingF.onComplete {
       case Success(binding) =>
