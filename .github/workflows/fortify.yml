@@ -14,10 +14,11 @@ jobs:
       fail-fast: false
       matrix:
         java: [8, 11, 17, 21]
+        scala: [2.13.x, 3.x]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-java@v3
+    - uses: actions/setup-java@v4
       with:
         distribution: temurin
         java-version: ${{matrix.java}}
@@ -61,7 +62,7 @@ jobs:
 
     - name: Test
       run: |
-        sbt compile
+        sbt ++${{matrix.scala}} compile
         rm -f target/vulnerabilities-actual.txt
         ./Fortify/Fortify_SCA_23.1.1/bin/sourceanalyzer \
           -b akka-http-webgoat \
@@ -69,5 +70,5 @@ jobs:
           -scan \
           | tail -n +4 > target/vulnerabilities-actual.txt
         cat target/scan.log
-        sum vulnerabilities.txt target/vulnerabilities-actual.txt
-        diff -u vulnerabilities.txt target/vulnerabilities-actual.txt
+        sum vulnerabilities-${{matrix.scala}.txt target/vulnerabilities-actual.txt
+        diff -u vulnerabilities-${{matrix.scala}}.txt target/vulnerabilities-actual.txt
