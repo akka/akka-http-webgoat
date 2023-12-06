@@ -70,5 +70,5 @@ jobs:
           -scan \
           | tail -n +4 > target/vulnerabilities-actual.txt
         cat target/scan.log
-        sum vulnerabilities-${{matrix.scala}.txt target/vulnerabilities-actual.txt
+        sum vulnerabilities-${{matrix.scala}}.txt target/vulnerabilities-actual.txt
         diff -u vulnerabilities-${{matrix.scala}}.txt target/vulnerabilities-actual.txt
