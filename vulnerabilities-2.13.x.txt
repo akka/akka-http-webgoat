@@ -1,7 +1,7 @@
 [62DCA7F0D8B6E3A52CE84F47A77199ED : low : System Information Leak : semantic ]
 BootWebGoat.scala(27) : Throwable.printStackTrace()
 
-[2F6060B081A5F8CBEF49E68CEE163BEB : low : System Information Leak : semantic ]
+[A1C26D8D85433A79C8100EF2CA14ADE7 : low : System Information Leak : semantic ]
 BootWebGoat.scala(32) : Throwable.printStackTrace()
 
 [4BC53406206E6A8ABB4B3D151916B1F6 : low : HTML5 : Overly Permissive CORS Policy : semantic ]
