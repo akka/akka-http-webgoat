@@ -164,23 +164,3 @@ Routes.scala(51) :  ->ProcessBuilder.!!(this)
         Routes.scala(139) : <=> (this)
     Routes.scala(139) : <->akka.http.webgoat.Routes$commandInjectionFromCookie$lzyINIT1$$anonfun$1$$anonfun$1.innerinit^(0->this)
     Routes.scala(138) :  ->akka.http.webgoat.Routes$commandInjectionFromCookie$lzyINIT1$$anonfun$1.apply(0)
-
-[3C19C215BE7A8DF59CD47FC24DAF64B0 : low : Code Correctness : Constructor Invokes Overridable Function : structural ]
-    BootWebGoat.scala(16)
-    Function: akka.http.webgoat.BootWebGoat.BootWebGoat [BootWebGoat.scala(11)]
-        Function: akka.http.webgoat.BootWebGoat.system [BootWebGoat.scala(12)]
-
-[3C19C215BE7A8DF59CD47FC24DAF64B1 : low : Code Correctness : Constructor Invokes Overridable Function : structural ]
-    BootWebGoat.scala(16)
-    Function: akka.http.webgoat.BootWebGoat.BootWebGoat [BootWebGoat.scala(11)]
-        Function: akka.http.webgoat.BootWebGoat.system [BootWebGoat.scala(12)]
-
-[3C19C215BE7A8DF59CD47FC24DAF64B2 : low : Code Correctness : Constructor Invokes Overridable Function : structural ]
-    BootWebGoat.scala(21)
-    Function: akka.http.webgoat.BootWebGoat.BootWebGoat [BootWebGoat.scala(11)]
-        Function: akka.http.webgoat.BootWebGoat.system [BootWebGoat.scala(12)]
-
-[3C19C215BE7A8DF59CD47FC24DAF64B3 : low : Code Correctness : Constructor Invokes Overridable Function : structural ]
-    BootWebGoat.scala(33)
-    Function: akka.http.webgoat.BootWebGoat.BootWebGoat [BootWebGoat.scala(11)]
-        Function: akka.http.webgoat.BootWebGoat.system [BootWebGoat.scala(12)]
