@@ -189,6 +189,3 @@ Routes.scala(51) :  ->ProcessBuilder.!!(this)
         Routes.scala(139) : <=> (this)
     Routes.scala(139) : <->akka.http.webgoat.Routes$$anonfun$commandInjectionFromCookie$2.innerinit^(0->this)
     Routes.scala(138) :  ->akka.http.webgoat.Routes$$anonfun$commandInjectionFromCookie$1.apply(0)
-
-[C28720E53777D9E9CB1598CACD02F9E7 : low : J2EE Bad Practices : Leftover Debug Code : structural ]
-    BootWebGoat.scala(11)
