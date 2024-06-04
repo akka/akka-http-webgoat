@@ -7,23 +7,23 @@ BootWebGoat.scala(32) : Throwable.printStackTrace()
 [A10917E05DA99D3FCE47634C164CE9AF : low : HTML5 : Overly Permissive CORS Policy : semantic ]
 Routes.scala(191) : Access-Control-Allow-Origin.*()
 
-[F4038E7E8C591F997550F69BCD82597D : critical : Path Manipulation : dataflow ]
+[181E72BCF9A4C3BC855A4A2D31FDB56E : critical : Path Manipulation : dataflow ]
 Routes.scala(146) :  ->FileAndResourceDirectives.getFromFile(0)
     Routes.scala(145) :  ->akka.http.webgoat.Routes$getFileFromParameter$lzyINIT1$$anonfun$1.apply(0)
 
-[F4038E7E8C591F997550F69BCD82597E : critical : Path Manipulation : dataflow ]
+[181E72BCF9A4C3BC855A4A2D31FDB56F : critical : Path Manipulation : dataflow ]
 Routes.scala(150) :  ->FileAndResourceDirectives.getFromFile(0)
     Routes.scala(149) :  ->akka.http.webgoat.Routes$getFileFromFormField$lzyINIT1$$anonfun$1.apply(0)
 
-[F4038E7E8C591F997550F69BCD82597F : critical : Path Manipulation : dataflow ]
+[181E72BCF9A4C3BC855A4A2D31FDB570 : critical : Path Manipulation : dataflow ]
 Routes.scala(154) :  ->FileAndResourceDirectives.getFromFile(0)
     Routes.scala(153) :  ->akka.http.webgoat.Routes$getFileFromPathSegment$lzyINIT1$$anonfun$1.apply(0)
 
-[F3B1A7D4B98E2ADD2460828D6F7D1FA1 : critical : Path Manipulation : dataflow ]
+[A020BF5BF22B9C90079FA25ECDDC9CFD : critical : Path Manipulation : dataflow ]
 Routes.scala(161) :  ->FileAndResourceDirectives.getFromDirectory(0)
     Routes.scala(160) :  ->akka.http.webgoat.Routes$getFromDirectoryFromParameter$lzyINIT1$$anonfun$1.apply(0)
 
-[0985058C028D3F7A0F051DBFB990B548 : critical : Path Manipulation : dataflow ]
+[F2BF40737623C26801B767236698B247 : critical : Path Manipulation : dataflow ]
 Routes.scala(166) :  ->FileAndResourceDirectives.getFromBrowseableDirectory(0)
     Routes.scala(165) :  ->akka.http.webgoat.Routes$getFromBrowseableDirectoryFromParameter$lzyINIT1$$anonfun$1.apply(0)
 
