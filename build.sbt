@@ -1,4 +1,4 @@
-crossScalaVersions := Seq("3.5.1", "2.13.15")
+crossScalaVersions := Seq("2.13.15", "3.5.2")
 scalaVersion := crossScalaVersions.value.head
 scalacOptions ++= Seq("-deprecation", "-feature")
 
