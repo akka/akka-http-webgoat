@@ -23,7 +23,7 @@ jobs:
         distribution: temurin
         java-version: ${{matrix.java}}
         cache: sbt
-
+    - uses: sbt/setup-sbt@v1
     - uses: actions/cache@v4
       env:
         cache-name: fortify
