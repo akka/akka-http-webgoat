@@ -20,5 +20,7 @@ jobs:
         distribution: temurin
         java-version: ${{matrix.java}}
     - uses: sbt/setup-sbt@v1
+    - name: Run akka/github-actions-scripts
+      uses: akka/github-actions-scripts/setup_global_resolver@main
     - name: Test
       run: sbt ++${{matrix.scala}} test
