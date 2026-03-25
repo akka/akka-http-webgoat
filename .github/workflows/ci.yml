@@ -13,9 +13,9 @@ jobs:
         scala: [2.13.x, 3.x]
     runs-on: Akka-Default-Latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: coursier/cache-action@v6
-    - uses: actions/setup-java@v3
+    - uses: actions/checkout@v6
+    - uses: coursier/cache-action@v8.1.0
+    - uses: actions/setup-java@v5
       with:
         distribution: temurin
         java-version: ${{matrix.java}}
